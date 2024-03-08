@@ -40,11 +40,64 @@ h1 {
 }
 
 .photographer_section article h2 {
-    color: #D3573C;
-    font-size: 36px;
+color: #D3573C;
+text-align: center;
+font-family: "DM Sans";
+font-size: 36px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-top: 20px;
+margin-bottom: 0;
 }
 
+.photographer-portrait {
+    width: 200px; /* ou la taille que vous souhaitez */
+    height: 200px; /* ou la taille que vous souhaitez */
+    /* Ajoutez des règles ici pour ajuster l'apparence de vos images de portrait */
+    display: block; /* Ceci assure que l'image est traitée comme un block pour le centrage */
+    margin: auto; /* Ceci centre l'image horizontalement s'il y a de l'espace disponible */
+    max-width: 100%; /* Ceci assure que l'image ne dépassera pas son conteneur */
+    height: auto; /* Ceci conserve l'aspect ratio de l'image */
+    border-radius: 50%; /* Ceci rend l'image circulaire */
+    object-fit: cover; /* Ceci assure que l'image couvre l'espace disponible sans étirement disproportionné */
+    background: lightgray 50% / contain no-repeat; /* Fond gris si l'image n'est pas chargée */
+}
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    flex-shrink: 0;
+    border-radius: 100px;
+}
+.location {
+color: #901C1C;
+text-align: center;
+font-family: "DM Sans";
+font-size: 13px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin: 0;
+}
+.tagline {
+color: #000;
+text-align: center;
+font-family: "DM Sans";
+font-size: 10px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-top: 3px;
+margin-bottom: 0;
+}
+.price {
+    color: #757575;
+
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+    margin-top: 3px;
 }

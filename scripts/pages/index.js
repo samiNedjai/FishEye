@@ -1,46 +1,56 @@
-    async function getPhotographers() {
-        // Ceci est un exemple de données pour avoir un affichage de photographes de test dès le démarrage du projet, 
-        // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
-        let photographers = [
-            {
-                "name": "Ma data test",
-                "id": 1,
-                "city": "Paris",
-                "country": "France",
-                "tagline": "Ceci est ma data test",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Autre data test",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "Ceci est ma data test 2",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
-        // et bien retourner le tableau photographers seulement une fois récupéré
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
+    // Fonction asynchrone pour récupérer les données des photographes depuis le fichier JSON
+async function getPhotographers() {
+    try {
+        // Utilise 'fetch' pour charger les données depuis 'data/photographers.json'
+        // Assurez-vous que le chemin est correct par rapport à l'emplacement de votre fichier index.js
+        const response = await fetch('data/photographers.json');
+        if (!response.ok) {
+            // Si la réponse n'est pas OK, lance une erreur
+            throw new Error('Network response was not ok');
+        }
+        // Parse la réponse en JSON
+        const data = await response.json();
+        // Retourne les données récupérées
+        return data;
+    } catch (error) {
+        // Affiche l'erreur dans la console si la requête échoue
+        console.error('Could not fetch the data: ', error);
     }
+}
+// Fonction pour créer le modèle de carte du photographe
 
-    async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
+function photographerTemplate(photographer) {
+    return `
+    <article>
+        <img src="assets/photographers/${photographer.portrait}" alt="${photographer.name}" class="photographer-portrait">
+        <h2>${photographer.name}</h2>
+        <p class ="location">${photographer.city}, ${photographer.country}</p>
+        <p class="tagline">${photographer.tagline}</p>
+        <p class="price">${photographer.price}€/jour</p>
+    </article>
+    `;
+}
+// Fonction pour afficher les données des photographes
+async function displayData(photographers) {
+    const photographersSection = document.querySelector(".photographer_section");
 
-        photographers.forEach((photographer) => {
-            const photographerModel = photographerTemplate(photographer);
-            const userCardDOM = photographerModel.getUserCardDOM();
-            photographersSection.appendChild(userCardDOM);
-        });
-    }
-
-    async function init() {
-        // Récupère les datas des photographes
-        const { photographers } = await getPhotographers();
-        displayData(photographers);
-    }
+    photographers.forEach((photographer) => {
+        // Corrigez le chemin pour qu'il corresponde à la structure correcte de votre projet
+        
+        
+        const userCardDOM = photographerTemplate(photographer);
+       
+        photographersSection.innerHTML += userCardDOM;
+    });
     
-    init();
-    
+}
+
+// Fonction d'initialisation qui récupère les données des photographes et les affiche
+async function init() {
+    // Récupère les datas des photographes
+    const { photographers } = await getPhotographers();
+    displayData(photographers);
+}
+
+// Appelle la fonction d'initialisation
+init();
