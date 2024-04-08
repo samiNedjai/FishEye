@@ -13,6 +13,9 @@ header {
     align-items: center;
     height: 90px;
 }
+a {
+    text-decoration: none;
+}
 
 h1 {
     color: #901C1C;
@@ -52,16 +55,16 @@ margin-bottom: 0;
 }
 
 .photographer-portrait {
-    width: 200px; /* ou la taille que vous souhaitez */
-    height: 200px; /* ou la taille que vous souhaitez */
-    /* Ajoutez des règles ici pour ajuster l'apparence de vos images de portrait */
-    display: block; /* Ceci assure que l'image est traitée comme un block pour le centrage */
-    margin: auto; /* Ceci centre l'image horizontalement s'il y a de l'espace disponible */
-    max-width: 100%; /* Ceci assure que l'image ne dépassera pas son conteneur */
-    height: auto; /* Ceci conserve l'aspect ratio de l'image */
-    border-radius: 50%; /* Ceci rend l'image circulaire */
-    object-fit: cover; /* Ceci assure que l'image couvre l'espace disponible sans étirement disproportionné */
-    background: lightgray 50% / contain no-repeat; /* Fond gris si l'image n'est pas chargée */
+    width: 200px; 
+    height: 200px; 
+ 
+    display: block; 
+    margin: auto; 
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    background: lightgray 50% / contain no-repeat; 
 }
 .photographer_section article img {
     height: 200px;
