@@ -1,8 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 @import url("photographer.css");
 
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+}
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4em;
+    font-family: "DM Sans", sans-serif, sans-serif;
 }
 
 
@@ -17,8 +27,9 @@ a {
     text-decoration: none;
 }
 
-h1 {
+header h1 {
     color: #901C1C;
+    font-size: 2.25em;
     margin-right: 100px;
 }
 

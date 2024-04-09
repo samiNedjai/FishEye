@@ -1,6 +1,6 @@
 // index.js
 
-class Photographer {
+export class Photographer {
   constructor(data) {
       this.name = data.name;
       this.id = data.id;
@@ -12,9 +12,15 @@ class Photographer {
   }
 
   getUserCardDOM() {
+    const link = document.createElement('a');
+    link.href = `photographer.html?id=${this.id}`;
+    link.setAttribute('aria-label', `Voir le profil de ${this.name}`);
+    link.className = "photographer-article-link";
+
       const article = document.createElement('article');
       article.className = "photographer-article";
       article.dataset.id = this.id; // Permet d'ajouter un data-id avec l'ID du photographe
+  
   
       const img = document.createElement('img');
       img.className = "photographer-portrait";
@@ -42,8 +48,11 @@ class Photographer {
       article.appendChild(locationElement);
       article.appendChild(taglineElement);
       article.appendChild(priceElement);
+
+      // Ajouter le lien à l'article
+      link.appendChild(article);
   
-      return article;
+      return link;
   }
   
 }
