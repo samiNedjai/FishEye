@@ -106,6 +106,30 @@ line-height: normal;
 }
 
 
+
+/* gestion ds likes  */ 
+
+.likes-count {
+    color: #901C1C
+}
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #901C1C;
+}
+
+.like-button.liked,
+.like-button.liked i {
+    color: #901C1C; /* Cœur rouge lorsque liké */
+}
+
+.fa-heart,
+.fa-heart-o {
+    font-size: 24px;
+}
+
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
