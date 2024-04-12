@@ -46,6 +46,14 @@ async function displayPhotographerDetails() {
               const mediaObject = MediaFactory.createMedia(media);
               mediaSection.innerHTML += mediaObject.getHTML();
               mediaObjects.push(mediaObject); // Assurez-vous de pousser l'objet dans le tableau
+
+              // total des likes 
+              const totalLikes = mediaData.reduce((total, media) => total + media.likes, 0);
+              const pricePerDay = photographerData.price;
+
+              // Mise à jour du DOM avec les totaux
+              document.querySelector('.total-likes').textContent = `${totalLikes}`;
+              document.querySelector('.price-per-day').textContent = `${pricePerDay}€ / jour`;
           });
           
           // Attache les gestionnaires d'événements aux boutons like après que le HTML des médias soit inséré
@@ -84,6 +92,12 @@ window.handleLike = function(mediaId) {
       // Change l'icône du cœur selon l'état de like
       const button = document.querySelector(`.like-button[data-id="${mediaId}"] i`);
       button.className = media.liked ? "fa fa-heart" : "fa fa-heart-o";
+
+       // Mettre à jour le total des likes dans le footer
+       const totalLikesElement = document.querySelector('.total-likes');
+       const currentTotalLikes = parseInt(totalLikesElement.textContent);
+       const newTotalLikes = media.liked ? currentTotalLikes + 1 : currentTotalLikes - 1;
+       totalLikesElement.textContent = `${newTotalLikes}`;
   }
 }
 

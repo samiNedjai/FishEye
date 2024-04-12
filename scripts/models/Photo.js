@@ -34,7 +34,7 @@ export default class Photo {
                 <div class="media-likes">
                     <span class="likes-count" data-id="${this.id}">${this.likes}</span>
                     <button class="like-button" data-id="${this.id}">
-                        <i class="fa fa-heart${this.liked ? '' : '-o'}" aria-hidden="true"></i>
+                        <i class="fa fa-heart${this.liked ? '' : '-o'} icon " aria-hidden="true"></i>
                     </button>
                 </div>
                 </div>

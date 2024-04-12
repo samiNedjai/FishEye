@@ -29,11 +29,11 @@ export default class Video {
                     
                 </video>
                 <div class="media-card-info">
-                <h3>Video de ${this.title}</h3>
+                <h3>${this.title}</h3>
                 <div class="media-likes">
                     <span class="likes-count" data-id="${this.id}">${this.likes}</span>
                     <button class="like-button" data-id="${this.id}">
-                        <i class="fa fa-heart${this.liked ? '' : '-o'}" aria-hidden="true"></i>
+                        <i class="icon fa fa-heart${this.liked ? '' : '-o'}" aria-hidden="true"></i>
                     </button>
                 </div>
                 </div>
