@@ -4,6 +4,10 @@ import { Photographer } from './index.js';
 // Importez MediaFactory depuis le dossier models
 import MediaFactory from '../models/MediaFactory.js';
 
+// Supposons que vos médias sont stockés dans un tableau accessible globalement
+ // Ce tableau sera rempli lors de l'initialisation de vos médias
+let mediaObjects = [];
+
 async function getPhotographerFromId(id) {
     const response = await fetch('data/photographers.json');
     const data = await response.json();
@@ -22,62 +26,8 @@ function getPhotographerIdFromUrl() {
     return params.get('id');
 }
 
-async function displayPhotographerDetails() {
-    const photographerId = getPhotographerIdFromUrl();  // Récupère l'ID du photographe depuis l'URL
-    if (photographerId) {
-      // Tentative de récupération des détails du photographe depuis l'ID
-        const photographerData = await getPhotographerFromId(photographerId);
-        if (photographerData) {
-           // Si les données du photographe sont trouvées, initialise une instance et met à jour le DOM
-            const photographer = new Photographer(photographerData);
-            document.querySelector('.photographer-name').textContent = photographer.name;
-            document.querySelector('.photographer-location').textContent = `${photographer.city}, ${photographer.country}`;
-            document.querySelector('.photographer-tagline').textContent = photographer.tagline;
-            // Affichage du portrait
-            const portraitElement = document.querySelector('.photographer-portrait');
-            portraitElement.src = `assets/photographers/${photographer.portrait}`;
-            portraitElement.alt = `Portrait de ${photographer.name}`;
 
-            // Récupère et affiche les médias associés au photographe
-
-            const mediaData = await getMediaForPhotographer(photographerId);
-            const mediaSection = document.querySelector('.photographer-work'); // Assurez-vous d'avoir un élément avec cette classe dans votre HTML
-            mediaData.forEach(media => {
-              const mediaObject = MediaFactory.createMedia(media);
-              mediaSection.innerHTML += mediaObject.getHTML();
-              mediaObjects.push(mediaObject); // Assurez-vous de pousser l'objet dans le tableau
-
-              // total des likes 
-              const totalLikes = mediaData.reduce((total, media) => total + media.likes, 0);
-              const pricePerDay = photographerData.price;
-
-              // Mise à jour du DOM avec les totaux
-              document.querySelector('.total-likes').textContent = `${totalLikes}`;
-              document.querySelector('.price-per-day').textContent = `${pricePerDay}€ / jour`;
-          });
-          
-          // Attache les gestionnaires d'événements aux boutons like après que le HTML des médias soit inséré
-
-          document.querySelectorAll('.like-button').forEach(button => {
-              button.addEventListener('click', () => {
-                  const mediaId = button.getAttribute('data-id');
-                  handleLike(mediaId);
-              });
-            });
-        } else {
-            console.error('Photographe non trouvé');
-        }
-    } else {
-        console.error('ID de photographe manquant dans l\'URL');
-    }
-}
-
-
-// gestion des likes 
-
-// Supposons que vos médias sont stockés dans un tableau accessible globalement
-let mediaObjects = []; // Ce tableau sera rempli lors de l'initialisation de vos médias
-
+                           //gestion des likes 
 // Fonction pour gérer les likes
 window.handleLike = function(mediaId) {
   // Trouve l'objet média correspondant dans la liste des médias chargés
@@ -101,6 +51,98 @@ window.handleLike = function(mediaId) {
   }
 }
 
+function attachLikeEventHandlers() {
+    document.querySelectorAll('.like-button').forEach(button => {
+        button.removeEventListener('click', likeButtonClickHandler); // Retirer d'abord pour éviter les doublons
+        button.addEventListener('click', likeButtonClickHandler);
+    });
+}
+
+function likeButtonClickHandler() {
+    const mediaId = this.getAttribute('data-id');
+    handleLike(mediaId);
+}
+
+// function des triér 
+function sortMedia(mediaObjects, sortBy) {
+  switch (sortBy) {
+      case 'popularity':
+          mediaObjects.sort((a, b) => b.likes - a.likes);
+          break;
+      case 'date':
+          mediaObjects.sort((a, b) => new Date(b.date) - new Date(a.date));
+          break;
+      case 'title':
+          mediaObjects.sort((a, b) => a.title.localeCompare(b.title));
+          break;
+      default:
+          // Tri par défaut si aucune option de tri valide n'est fournie
+          break;
+  }
+  displaySortedMedia(mediaObjects);
+}
+// Afficher les médias triés en mettant à jour le DOM :
+function displaySortedMedia(mediaObjects) {
+  const mediaSection = document.querySelector('.photographer-work');
+  mediaSection.innerHTML = ''; // Vide la section avant de réafficher les médias triés
+  mediaObjects.forEach(media => {
+      mediaSection.innerHTML += media.getHTML();
+  });
+  attachLikeEventHandlers();
+}
+
+async function displayPhotographerDetails() {
+    const photographerId = getPhotographerIdFromUrl();  // Récupère l'ID du photographe depuis l'URL
+    if (photographerId) {
+      // Tentative de récupération des détails du photographe depuis l'ID
+        const photographerData = await getPhotographerFromId(photographerId);
+        if (photographerData) {
+           // Si les données du photographe sont trouvées, initialise une instance et met à jour le DOM
+            const photographer = new Photographer(photographerData);
+            document.querySelector('.photographer-name').textContent = photographer.name;
+            document.querySelector('.photographer-location').textContent = `${photographer.city}, ${photographer.country}`;
+            document.querySelector('.photographer-tagline').textContent = photographer.tagline;
+            // Affichage du portrait
+            const portraitElement = document.querySelector('.photographer-portrait');
+            portraitElement.src = `assets/photographers/${photographer.portrait}`;
+            portraitElement.alt = `Portrait de ${photographer.name}`;
+
+            // Récupère et affiche les médias associés au photographe
+
+            const mediaData = await getMediaForPhotographer(photographerId);
+            const mediaSection = document.querySelector('.photographer-work'); // Assurez-vous d'avoir un élément avec cette classe dans votre HTML
+            mediaData.forEach(media => {
+             // Transformation des données en objets Media
+              mediaObjects = mediaData.map(media => MediaFactory.createMedia(media));
+             
+              // Affichage des médias avant le tri
+              
+              displaySortedMedia(mediaObjects);
+
+              // Attachez l'écouteur d'événements au menu de tri ici
+                document.getElementById('sortSelect').addEventListener('change', (event) => {
+                  const sortBy = event.target.value;
+                  sortMedia(mediaObjects, sortBy);
+                   displaySortedMedia(mediaObjects);
+              });
+              // total des likes 
+              const totalLikes = mediaData.reduce((total, media) => total + media.likes, 0);
+              const pricePerDay = photographerData.price;
+
+              // Mise à jour du DOM avec les totaux
+              document.querySelector('.total-likes').textContent = `${totalLikes}`;
+              document.querySelector('.price-per-day').textContent = `${pricePerDay}€ / jour`;
+              attachLikeEventHandlers(); 
+          });
+          
+          // Attache les gestionnaires d'événements aux boutons like après que le HTML des médias soit inséré
+        } else {
+            console.error('Photographe non trouvé');
+        }
+    } else {
+        console.error('ID de photographe manquant dans l\'URL');
+    }
+}
 
 document.addEventListener('DOMContentLoaded', displayPhotographerDetails);
 

@@ -4,6 +4,7 @@ export default class Video {
         this.photographerId = data.photographerId;
         this.title = data.title;
         this.video = data.video;
+        this.date = data.date;
         this.likes = data.likes;
         this.liked = false; // État initial de 'like' pour la photo
         
@@ -33,7 +34,7 @@ export default class Video {
                 <div class="media-likes">
                     <span class="likes-count" data-id="${this.id}">${this.likes}</span>
                     <button class="like-button" data-id="${this.id}">
-                        <i class="icon fa fa-heart${this.liked ? '' : '-o'}" aria-hidden="true"></i>
+                        <i class="fa fa-heart${this.liked ? '' : '-o'}" aria-hidden="true"></i>
                     </button>
                 </div>
                 </div>

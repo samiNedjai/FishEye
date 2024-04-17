@@ -78,7 +78,7 @@ line-height: normal;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 35px 60px;
+    gap: 35px 35px;
 } 
 .media-card {
     width: 25%;
@@ -108,7 +108,7 @@ line-height: normal;
     color: #901C1C;
 
 font-family: "DM Sans";
-font-size: 24px;
+font-size: 22px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
@@ -120,9 +120,9 @@ line-height: normal;
 
 .likes-count {
     color: #901C1C;
-    font-size: 24px;
+    font-size: 22px;
 font-style: normal;
-font-weight: 500;
+font-weight: 400;
 line-height: normal;
 }
 .like-button {
@@ -137,10 +137,6 @@ line-height: normal;
 .like-button.liked i {
     color: #901C1C; /* Cœur rouge lorsque liké */
 }
-.fa.icon {
-    font-size: 21px;
-}
-
 
 /* footer  total des likes*/ 
 .photographer-footer {
@@ -167,6 +163,42 @@ line-height: normal;
 }
 .icon{
     width: 22px;
+}
+
+
+/* le trier  */
+.works-sort {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.works-sort label {
+    padding-right: 25px;
+    font-size: 1.125em;
+    font-weight: 700;
+}
+#sortSelect {
+    background-color: #901C1C;
+    color: #ffffff;
+    width: 170px;
+    height: 69px;
+    flex-shrink: 0;
+    border: 1px;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 700;
+}
+#sortSelect option {
+    background-color: #901C1C;
+    color: #ffffff;
+    border-bottom: 3px;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .modal {
