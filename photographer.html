@@ -42,23 +42,38 @@
             <p class="price-per-day"></p>
         </div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
+    <div id="contact_modal" class="modal-hidden">
+      <div class="modal">
+        <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg"  />
+          <img class="close-button" src="assets/icons/close.svg" aria-label="Fermer le formulaire de contact" alt="Fermer la modale de contact" role="button">
+          <!-- <button class="close-button">Fermer</button> -->
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <script type="module" src="./scripts/utils/contactForm.js"></script>
-    <script  type="module" src="./scripts/pages/photographer.js"></script>
+        <form class="form">
+          <div  class="form-data">
+            <label for="firstName">Prénom</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          <div  class="form-data">
+            <label for="lastName">Nom</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+          <div  class="form-data">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div  class="form-data"> 
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="contact_button submitButton" >Envoyer</button>
+        </form>
+      </div>
+      <div class="contact_modal_background"></div>
+    </div>
+    <script type="module" src="scripts/utils/contactForm.js"></script>
+    <script  type="module" src="scripts/pages/photographer.js"></script>
+   
    
   </body>
 </html>
