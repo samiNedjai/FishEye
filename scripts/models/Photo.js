@@ -31,10 +31,10 @@ export default class Photo {
             <div class="media-card">
                 <img src="assets/media/${this.photographerId}/mini/${this.image}" alt="${this.title}" >
                 <div class="media-card-info">
-                <h3>${this.title}</h3>
+                <div class="title">${this.title}</div>
                 <div class="media-likes">
                     <span class="likes-count" data-id="${this.id}">${this.likes}</span>
-                    <button class="like-button" data-id="${this.id}">
+                    <button class="like-button" data-id="${this.id}" aria-label="Aimer ce contenu">
                         <i class="fa fa-heart${this.liked ? '' : '-o'}" aria-hidden="true"></i>
                     </button>
                 </div>

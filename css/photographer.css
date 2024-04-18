@@ -12,9 +12,6 @@ main{
     padding: 0 100px;
 }
 
-/* #contact_modal {
-    display: none;
-} */
 
 .photograph-header {
     padding: 0 50px;
@@ -78,7 +75,7 @@ line-height: normal;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 35px 35px;
+    gap: 30px 95px;
 } 
 .media-card {
     width: 25%;
@@ -104,7 +101,7 @@ line-height: normal;
     justify-content: space-between;
     align-items: center; 
 }
-.media-card-info h3 {
+.title {
     color: #901C1C;
 
 font-family: "DM Sans";
@@ -142,7 +139,7 @@ line-height: normal;
 .photographer-footer {
     position: fixed;
     bottom: 0;
-    right: 36px;
+    right: 90px;
     padding: 16px 35px;
     border-radius: 10px 10px 0 0;
     display: flex;
@@ -153,7 +150,10 @@ line-height: normal;
 }
 .total-likes,
 .price-per-day  {
-    font-size: 1.5em;
+text-align: center;
+font-family: "DM Sans";
+font-size: 24px;
+line-height: normal;
 }
 .total-likes-contenu {
     display: flex;
@@ -216,8 +216,10 @@ line-height: normal;
     width: 100%;
     top: 0;
     left: 0;
-    justify-content: center;
     z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .modal {
@@ -238,13 +240,7 @@ line-height: normal;
     scrollbar-width: thin;
     z-index: 3;
   }
-  .modal-backdrop {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(196, 196, 196, 0.4);
-    z-index: -1;
-  }
+
   .close-button {
     position: absolute;
     top: 10px;
@@ -270,8 +266,8 @@ line-height: normal;
 .modal header img {
     cursor: pointer;
     position: absolute;
-    top: 35px;
-    right: 35px;
+    top: 14px;
+    right: 5px;
 }
 
 .modal header h2 {
@@ -300,17 +296,31 @@ form .form-data {
     margin-bottom: 15px;
 }
 
-/* form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
-} */
-
 form input {
     width: 100%;
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+.form-data textarea {
+    width: 100%; 
+    min-height: 150px; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    resize: vertical; 
+}
+.error-message {
+    color: red;
+    display: none;
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+.invalid {
+    border-color: red;
+}
+.thank-you-modal-content {
+    text-align: center;
+    padding: 20px;
 }

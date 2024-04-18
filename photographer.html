@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="phoographer traveaux detailles">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
 
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" alt="logo" class="logo" />
     </header>
     <main id="main">
           <div class="photograph-header">
@@ -53,25 +56,29 @@
           <div  class="form-data">
             <label for="firstName">Prénom</label>
             <input type="text" id="firstName" name="firstName" required>
+            <div class="error-message"></div>
           </div>
           <div  class="form-data">
             <label for="lastName">Nom</label>
             <input type="text" id="lastName" name="lastName" required>
+            <div class="error-message" ></div>
           </div>
           <div  class="form-data">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" required>
+            <div class="error-message" ></div>
           </div>
           <div  class="form-data"> 
             <label for="message">Message</label>
             <textarea id="message" name="message" required></textarea>
+            <div class="error-message"></div>
           </div>
           <button type="submit" class="contact_button submitButton" >Envoyer</button>
         </form>
       </div>
       <div class="contact_modal_background"></div>
     </div>
-    <script type="module" src="scripts/utils/contactForm.js"></script>
+    <script  type="module" src="scripts/utils/contactForm.js"></script>
     <script  type="module" src="scripts/pages/photographer.js"></script>
    
    
