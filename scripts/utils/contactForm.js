@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+
     const openButton = document.querySelector('.contact_button'); // Bouton pour ouvrir le modal
     const closeButton = document.querySelector('.close-button'); // Bouton pour fermer le modal
     const modal = document.getElementById('contact_modal'); // L'élément modal
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const originalModalContent = modal.innerHTML; 
 
  // Fonction pour afficher le modal de formulaire
- function openModal(photographerName) {
+export function openModal(photographerName) {
     document.getElementById('photographerName').textContent = photographerName;
     modal.classList.add('modal-visible');
     modal.classList.remove('modal-hidden');
@@ -98,4 +98,3 @@ function attachFormEventListeners() {
 }
 
 attachFormEventListeners(); // Appel initial pour attacher les écouteurs
-});
