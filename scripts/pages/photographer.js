@@ -3,7 +3,7 @@
 import { Photographer } from './index.js';
 // Importez MediaFactory depuis le dossier models
 import MediaFactory from '../models/MediaFactory.js';
-
+// importer fonction
 import { openModal } from '../utils/contactForm.js';
 
 

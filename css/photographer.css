@@ -12,10 +12,6 @@ main{
     padding: 0 100px;
 }
 
-/* #contact_modal {
-    display: none;
-} */
-
 .photograph-header {
     padding: 0 50px;
     background-color: #FAFAFA;
@@ -28,7 +24,6 @@ main{
 }
 .photograph-header h1 {
  color: #D3573C;
-font-family: "DM Sans";
 font-size: 64px;
 font-style: normal;
 font-weight: 400;
@@ -41,7 +36,6 @@ line-height: normal;
 }
 .photographer-tagline {
 color: #525252;
-font-family: "DM Sans";
 font-size: 18px;
 font-weight: 400;
 }
@@ -107,9 +101,7 @@ font-weight: 400;
     align-items: center; 
 }
 .title {
-    color: #901C1C;
-
-font-family: "DM Sans";
+color: #901C1C;
 font-size: 22px;
 font-style: normal;
 font-weight: 400;
@@ -156,7 +148,6 @@ line-height: normal;
 .total-likes,
 .price-per-day  {
 text-align: center;
-font-family: "DM Sans";
 font-size: 24px;
 line-height: normal;
 }
@@ -210,6 +201,8 @@ line-height: normal;
 
 
 /* Formulaire  */
+
+
 .modal-hidden {
     display: none;
   }
@@ -280,7 +273,10 @@ line-height: normal;
     font-weight: normal;
     text-align: center;
 } 
-
+#photographerName {
+    display: flex;
+    font-size: 64px;
+}
 form {
     display: flex;
     width: 100%;

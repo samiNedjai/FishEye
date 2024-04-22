@@ -1,5 +1,5 @@
-// index.js
 
+// Définition de la classe Photographer pour encapsuler les données et les méthodes liées à un photographe
 export class Photographer {
   constructor(data) {
       this.name = data.name;
@@ -11,7 +11,7 @@ export class Photographer {
       this.portrait = data.portrait;
       
   }
-
+// Méthode pour générer le DOM d'une carte de photographe
   getUserCardDOM() {
     const link = document.createElement('a');
     link.href = `photographer.html?id=${this.id}`;
@@ -25,8 +25,8 @@ export class Photographer {
   
       const img = document.createElement('img');
       img.className = "photographer-portrait";
-      img.setAttribute("src", `assets/photographers/${this.portrait}`);
-      img.setAttribute("alt", `Portrait de ${this.name}`);
+      img.src = `assets/photographers/${this.portrait}`;
+      img.alt = `Portrait de ${this.name}`;
   
       const nameElement = document.createElement('h2');
       nameElement.textContent = this.name;
@@ -43,12 +43,8 @@ export class Photographer {
       priceElement.className = "price";
       priceElement.textContent = `${this.price}€/jour`;
   
-      // Ajouter les éléments créés au DOM de l'article
-      article.appendChild(img);
-      article.appendChild(nameElement);
-      article.appendChild(locationElement);
-      article.appendChild(taglineElement);
-      article.appendChild(priceElement);
+     // Assemblage des différents éléments de la carte
+      article.append(img, nameElement, locationElement, taglineElement, priceElement);
 
       // Ajouter le lien à l'article
       link.appendChild(article);
@@ -58,7 +54,7 @@ export class Photographer {
   
 }
 
-// Utilisez cette fonction pour obtenir les données des photographes et les afficher
+// Fonction asynchrone pour récupérer les données des photographes depuis un fichier JSON
 async function getPhotographers() {
   const response = await fetch('data/photographers.json');
   const data = await response.json();
@@ -67,19 +63,23 @@ async function getPhotographers() {
       photographers: data.photographers.map(photographerData => new Photographer(photographerData))
   };
 }
-
+// Fonction pour afficher les photographes dans la section correspondante
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
-  photographers.forEach((photographer) => {
-      const photographerModel = new Photographer(photographer);
-      const userCardDOM = photographerModel.getUserCardDOM();
-      photographersSection.appendChild(userCardDOM);
+  photographers.forEach(photographer => {
+    const userCardDOM = photographer.getUserCardDOM();
+    photographersSection.appendChild(userCardDOM);
   });
 }
 
+// Fonction d'initialisation qui charge les données et les affiche
 async function init() {
-  const { photographers } = await getPhotographers();
-  displayData(photographers);
+  const photographersSection = document.querySelector(".photographer_section");
+    const { photographers } = await getPhotographers();
+    displayData(photographers);
+ 
 }
 
-init(); // Cette ligne démarre l'initialisation lorsque la page est chargée
+
+// Assurez-vous que le DOM est complètement chargé avant d'exécuter le script
+document.addEventListener('DOMContentLoaded', init); 

@@ -11,8 +11,7 @@ body {
     margin: 0;
     font-size: 16px;
     font-weight: 400;
-    line-height: 1.4em;
-    font-family: "DM Sans", sans-serif, sans-serif;
+    line-height: 22.4px;
 }
 
 
@@ -56,9 +55,7 @@ header h1 {
 .photographer_section article h2 {
 color: #D3573C;
 text-align: center;
-font-family: "DM Sans";
 font-size: 36px;
-font-style: normal;
 font-weight: 400;
 line-height: normal;
 margin-top: 20px;
@@ -68,7 +65,6 @@ margin-bottom: 0;
 .photographer-portrait {
     width: 200px; 
     height: 200px; 
- 
     display: block; 
     margin: auto; 
     max-width: 100%; 
@@ -86,7 +82,6 @@ margin-bottom: 0;
 .location {
 color: #901C1C;
 text-align: center;
-font-family: "DM Sans";
 font-size: 13px;
 font-style: normal;
 font-weight: 400;
@@ -96,7 +91,6 @@ margin: 0;
 .tagline {
 color: #000;
 text-align: center;
-font-family: "DM Sans";
 font-size: 10px;
 font-style: normal;
 font-weight: 400;
@@ -106,9 +100,7 @@ margin-bottom: 0;
 }
 .price {
     color: #757575;
-
     text-align: center;
-    font-family: "DM Sans";
     font-size: 9px;
     font-style: normal;
     font-weight: 400;
