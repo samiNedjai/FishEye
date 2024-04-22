@@ -1,19 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
     const openButton = document.querySelector('.contact_button'); // Bouton pour ouvrir le modal
     const closeButton = document.querySelector('.close-button'); // Bouton pour fermer le modal
-    const modal = document.getElementById('contact_modal'); // Le modal
-    const form = document.querySelector('form'); // Le formulaire
+    const modal = document.getElementById('contact_modal'); // L'élément modal
+    const form = document.querySelector('form'); // Le formulaire à l'intérieur du modal
 
     // les champs du formulaire 
     const firstName = document.getElementById('firstName');
     const lastName = document.getElementById('lastName');
     const email = document.getElementById('email');
     const message = document.getElementById('message');
-        
-    const originalModalContent = modal.innerHTML; // Stocker le contenu original
+    // Stocker le contenu original du modal pour restauration
+    const originalModalContent = modal.innerHTML; 
 
  // Fonction pour afficher le modal de formulaire
- function openModal() {
+ function openModal(photographerName) {
+    document.getElementById('photographerName').textContent = photographerName;
     modal.classList.add('modal-visible');
     modal.classList.remove('modal-hidden');
     document.body.classList.add('noScroll'); // Empêche le défilement du fond
@@ -29,18 +30,10 @@ function closeModal() {
 // Fonction pour restaurer le contenu original du modal
 function restoreOriginalModalContent() {
     modal.innerHTML = originalModalContent;
-    attachFormEventListeners(); // Attacher de nouveau les écouteurs d'événements au formulaire
+    attachFormEventListeners(); // Réattacher les écouteurs d'événements aux nouveaux éléments du formulaire
+
 }
-
-// Fonction pour attacher des écouteurs d'événements au formulaire
-function attachFormEventListeners() {
-    modal.querySelector('.close-button').addEventListener('click', closeModal);
-    modal.querySelector('form').addEventListener('submit', submitForm);
-    attachInputValidationListeners(); // Gestion de la validation en temps réel
-}
-
-
-// Afficher le modal de remerciement
+// Fonction pour afficher un message de remerciement
 function showModalThankYou() {
     const thanksModalContent = `
     <div class="modal"
@@ -57,6 +50,7 @@ function showModalThankYou() {
         restoreOriginalModalContent();
     });
 }
+
     // Validation des champs en temps réel
     function validateInput(input, regex, errorText) {
         const errorDiv = input.nextElementSibling;
@@ -73,29 +67,35 @@ function showModalThankYou() {
         }
     }
 
-     // Attach event handlers
-     openButton.addEventListener('click', openModal);
-     closeButton.addEventListener('click', closeModal);
- 
-     form.addEventListener('submit', (event) => {
-         event.preventDefault();
-         let isValid = true;
- 
-         // Validate all fields
-         isValid &= validateInput(firstName, /^[A-Za-z]{2,}$/, 'Le prénom doit contenir au moins deux lettres.');
-         isValid &= validateInput(lastName, /^[A-Za-z]{2,}$/, 'Le prénom doit contenir au moins deux lettres.');
-         isValid &= validateInput(email, /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/, 'Email invalide.');
-         isValid &= validateInput(message, /.+/, 'Le message ne peut pas être vide.');
- 
-         if (isValid) {
-             showModalThankYou(); // Afficher le modal de remerciement si tout est valide
-         }
-     });
- 
-     // Real-time validation
-     firstName.addEventListener('input', () => validateInput(firstName, /^[A-Za-z]{2,}$/, 'Le prénom doit contenir au moins deux lettres.'));
-     lastName.addEventListener('input', () => validateInput(lastName, /^[A-Za-z]{2,}$/, 'Le prénom doit contenir au moins deux lettres.'));
-     email.addEventListener('input', () => validateInput(email, /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/, 'Email invalide.'));
-     message.addEventListener('input', () => validateInput(message, /.+/, 'Le message ne peut pas être vide.'));
- });
- attachFormEventListeners(); // Appel initial pour attacher les écouteurs
+// Attacher les gestionnaires d'événements pour la soumission du formulaire et la validation
+function attachFormEventListeners() {
+    openButton.addEventListener('click', () => {
+        const photographerName = document.querySelector('.photographer-name').textContent;
+        openModal(photographerName);
+    });
+
+    closeButton.addEventListener('click', closeModal);
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        let isValid = true;
+
+        isValid &= validateInput(firstName, /^[A-Za-z]{2,}$/, 'Le prénom doit contenir au moins deux lettres.');
+        isValid &= validateInput(lastName, /^[A-Za-z]{2,}$/, 'Le nom doit contenir au moins deux lettres.');
+        isValid &= validateInput(email, /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/, 'Email invalide.');
+        isValid &= validateInput(message, /.+/, 'Le message ne peut pas être vide.');
+
+        if (isValid) {
+            showModalThankYou(); // Afficher le modal de remerciement si tout est valide
+        }
+    });
+
+    // Validation en temps réel
+    firstName.addEventListener('input', () => validateInput(firstName, /^[A-Za-z]{2,}$/, 'Le prénom doit contenir au moins deux lettres.'));
+    lastName.addEventListener('input', () => validateInput(lastName, /^[A-Za-z]{2,}$/, 'Le nom doit contenir au moins deux lettres.'));
+    email.addEventListener('input', () => validateInput(email, /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/, 'Email invalide.'));
+    message.addEventListener('input', () => validateInput(message, /.+/, 'Le message ne peut pas être vide.'));
+}
+
+attachFormEventListeners(); // Appel initial pour attacher les écouteurs
+});

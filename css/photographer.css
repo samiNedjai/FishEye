@@ -12,6 +12,9 @@ main{
     padding: 0 100px;
 }
 
+/* #contact_modal {
+    display: none;
+} */
 
 .photograph-header {
     padding: 0 50px;
@@ -37,8 +40,10 @@ line-height: normal;
     margin-bottom: 10px;
 }
 .photographer-tagline {
-    color: #525252;
-    font-size: 1.125em;
+color: #525252;
+font-family: "DM Sans";
+font-size: 18px;
+font-weight: 400;
 }
 .photograph-header img {
     width: 200px;

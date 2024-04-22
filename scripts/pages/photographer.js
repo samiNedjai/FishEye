@@ -4,9 +4,10 @@ import { Photographer } from './index.js';
 // Importez MediaFactory depuis le dossier models
 import MediaFactory from '../models/MediaFactory.js';
 
-// Supposons que vos médias sont stockés dans un tableau accessible globalement
+
  // Ce tableau sera rempli lors de l'initialisation de vos médias
 let mediaObjects = [];
+
 
 async function getPhotographerFromId(id) {
     const response = await fetch('data/photographers.json');
@@ -118,6 +119,7 @@ async function displayPhotographerDetails() {
               // Affichage des médias avant le tri
               
               displaySortedMedia(mediaObjects);
+         
 
               // Attachez l'écouteur d'événements au menu de tri ici
                 document.getElementById('sortSelect').addEventListener('change', (event) => {
@@ -133,6 +135,11 @@ async function displayPhotographerDetails() {
               document.querySelector('.total-likes').textContent = `${totalLikes}`;
               document.querySelector('.price-per-day').textContent = `${pricePerDay}€ / jour`;
               attachLikeEventHandlers(); 
+
+              document.querySelector('.contact_button').addEventListener('click', () => {
+                openModal(photographer.name); 
+
+              });
           });
           
           // Attache les gestionnaires d'événements aux boutons like après que le HTML des médias soit inséré
