@@ -1,85 +1,140 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="phoographer traveaux detailles">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="phoographer traveaux detailles" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 
-    <title>Fisheye - photographe </title>
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
       <img src="assets/images/logo.png" alt="logo" class="logo" />
     </header>
     <main id="main">
-          <div class="photograph-header">
-              <div class="photograph-header--info">
-                  <h1 class="photographer-name"></h1> <!-- Nom du photographe -->
-                  <p class="photographer-location"></p> <!-- Localisation -->
-                  <p class="photographer-tagline"></p> <!-- Tagline -->
-              </div>
-            <button class="contact_button" >Contactez-moi</button>
-            <img src="" alt="Portrait du photographe" class="photographer-portrait">
-          </div>
-          <!-- le trier-->
-          <div class="works-sort">
-            <label for="sortSelect">Trier par :</label>
-            <select id="sortSelect" aria-label="Trier par">
-                <option value="popularity">Popularité</option>
-                <option value="date">Date</option>
-                <option value="title">Titre</option>
-            </select>
+      <div class="photograph-header">
+        <div class="photograph-header--info">
+          <h1 class="photographer-name"></h1>
+          <!-- Nom du photographe -->
+          <p class="photographer-location"></p>
+          <!-- Localisation -->
+          <p class="photographer-tagline"></p>
+          <!-- Tagline -->
         </div>
-          <div class="photographer-work"></div> <!-- Médias du photographe seront ajoutés ici -->
-          <div class="photographer-footer">
-            <div class="total-likes-contenu">
-              <p class="total-likes"></p>
-            <img src="assets/icons/heart-solid.svg" class="icon" alt="likes">
-            </div>
-            
-            <p class="price-per-day"></p>
+        <button class="contact_button">Contactez-moi</button>
+        <img
+          src=""
+          alt="Portrait du photographe"
+          class="photographer-portrait"
+        />
+      </div>
+      <!-- le trier-->
+      <div class="works-sort">
+        <label for="sortSelect">Trier par :</label>
+        <select id="sortSelect" aria-label="Trier par">
+          <option value="popularity">Popularité</option>
+          <option value="date">Date</option>
+          <option value="title">Titre</option>
+        </select>
+      </div>
+      <div class="photographer-work"></div>
+      <!-- Médias du photographe seront ajoutés ici -->
+      <div class="photographer-footer">
+        <div class="total-likes-contenu">
+          <p class="total-likes"></p>
+          <img src="assets/icons/heart-solid.svg" class="icon" alt="likes" />
         </div>
-        <div class="photographer_section" style="display: none;"></div>
+
+        <p class="price-per-day"></p>
+      </div>
+      <div class="photographer_section" style="display: none"></div>
+      <!-- lightbox -->
+
+      <div id="lightbox" class="lightbox" style="display: none">
+        <div class="lightbox-media-container"></div>
+
+        <img
+          src="assets/icons/xmark-solid.svg"
+          alt="Fermer"
+          class="lightbox-close"
+          aria-label="Fermer"
+          role="button"
+          tabindex="0"
+        />
+        <img
+          src="assets/icons/chevron-left-solid.svg"
+          alt="Précédent"
+          class="lightbox-prev"
+          aria-label="Image précédente"
+          role="link"
+          tabindex="0"
+        />
+        <img
+          src="assets/icons/chevron-right-solid.svg"
+          alt="Suivant"
+          class="lightbox-next"
+          aria-label="Image suivante"
+          role="link"
+          tabindex="0"
+        />
+      </div>
     </main>
     <div id="contact_modal" class="modal-hidden">
       <div class="modal">
-        <header>
-          <h2>Contactez-moi <span id="photographerName"></span></h2>
-          <img class="close-button" src="assets/icons/close.svg" aria-label="Fermer le formulaire de contact" alt="Fermer la modale de contact" role="button">
+        <div>
+          <h2>Contactez-moi</h2>
+
+          <h3 id="photographerName"></h3>
+
+          <img
+            class="close-button"
+            src="assets/icons/close.svg"
+            aria-label="Fermer le formulaire de contact"
+            alt="Fermer la modale de contact"
+            role="button"
+          />
           <!-- <button class="close-button">Fermer</button> -->
-        </header>
-        <form class="form">
-          <div  class="form-data">
+        </div>
+        <form>
+          <div class="form-data">
             <label for="firstName">Prénom</label>
-            <input type="text" id="firstName" name="firstName" required>
+            <input type="text" id="firstName" name="firstName" required />
             <div class="error-message"></div>
           </div>
-          <div  class="form-data">
+          <div class="form-data">
             <label for="lastName">Nom</label>
-            <input type="text" id="lastName" name="lastName" required>
-            <div class="error-message" ></div>
+            <input type="text" id="lastName" name="lastName" required />
+            <div class="error-message"></div>
           </div>
-          <div  class="form-data">
+          <div class="form-data">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-            <div class="error-message" ></div>
+            <input type="email" id="email" name="email" required />
+            <div class="error-message"></div>
           </div>
-          <div  class="form-data"> 
+          <div class="form-data">
             <label for="message">Message</label>
             <textarea id="message" name="message" required></textarea>
             <div class="error-message"></div>
           </div>
-          <button type="submit" class="contact_button submitButton" >Envoyer</button>
+          <button type="submit" class="contact_button submitButton">
+            Envoyer
+          </button>
         </form>
       </div>
       <div class="contact_modal_background"></div>
     </div>
-    <script  type="module" src="scripts/utils/contactForm.js"></script>
-    <script  type="module" src="scripts/pages/photographer.js"></script>
+    <script type="module" src="scripts/utils/lightbox.js"></script>
+    <script type="module" src="scripts/utils/contactForm.js"></script>
+    <script type="module" src="scripts/pages/photographer.js"></script>
   </body>
 </html>

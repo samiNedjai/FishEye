@@ -3,10 +3,12 @@
 import { Photographer } from './index.js';
 // Importez MediaFactory depuis le dossier models
 import MediaFactory from '../models/MediaFactory.js';
-// importer fonction
+// importer fonction d'ovrir le formulaire 
 import { openModal } from '../utils/contactForm.js';
 
 
+//  Importer la lightbox
+import { openLightbox, mediaGallery,attachLightboxControls } from '../utils/lightbox.js';
  // Ce tableau sera rempli lors de l'initialisation de vos médias
 let mediaObjects = [];
 
@@ -87,12 +89,27 @@ function sortMedia(mediaObjects, sortBy) {
 function displaySortedMedia(mediaObjects) {
   const mediaSection = document.querySelector('.photographer-work');
   mediaSection.innerHTML = ''; // Vide la section avant de réafficher les médias triés
-  mediaObjects.forEach(media => {
-      mediaSection.innerHTML += media.getHTML();
+  mediaObjects.forEach((media, index) => {
+    const html = media.getHTML();
+    mediaSection.innerHTML += html;
+    // Vous devez adapter ce chemin pour qu'il corresponde à la structure de vos données
+    mediaGallery[index] = {
+        src: `assets/media/${media.photographerId}/large/${media.image || media.video}`,
+        alt: media.title,
+        type: media.image ? 'image' : 'video'
+    };
   });
+
   attachLikeEventHandlers();
+  attachLightboxEventHandlers();
 }
 
+// / Attache les événements de clic pour ouvrir la lightbox
+function attachLightboxEventHandlers() {
+  document.querySelectorAll('.photographer-work img').forEach((img, index) => {
+    img.addEventListener('click', () => openLightbox(index));
+  });
+}
 // Affiche les détails du photographe et ses médias
 async function displayPhotographerDetails() {
     const photographerId = getPhotographerIdFromUrl();  // Récupère l'ID du photographe depuis l'URL
@@ -145,11 +162,8 @@ async function displayPhotographerDetails() {
     } else {
         console.error('ID de photographe manquant dans l\'URL');
     }
+    attachLightboxControls();
+    attachLightboxEventHandlers();
 }
 
 document.addEventListener('DOMContentLoaded', displayPhotographerDetails);
-
-
-
-
-
