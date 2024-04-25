@@ -45,9 +45,6 @@ font-weight: 400;
     border-radius: 50%;
     object-fit: cover;
 }
-.photograph-header--info {
-
-}
 
 .contact_button {
     font-size: 20px;
@@ -72,28 +69,23 @@ font-weight: 400;
     padding-top: 40px;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 30px 95px;
+    gap: 30px 85px;
 } 
 .media-card {
-    width: 25%;
-    min-width: 240px;
-    flex: 25%;
+    flex: 0 1 calc(25%); 
+    min-width:350px;
+    margin-bottom: 30px; 
+   
+    
 }
+.media-card img,
 .media-card video {
-    border-radius: 5px;
-    width: 100%;
+    width: 350px;
     height: 300px;
     object-fit: cover;
-    cursor: pointer;
-}
-.media-card img{
     border-radius: 5px;
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    cursor: pointer;
 }
 .media-card-info {
     display: flex;
