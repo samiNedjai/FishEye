@@ -107,3 +107,61 @@ margin-bottom: 0;
     line-height: normal; 
     margin-top: 3px;
 }
+
+@media screen and (max-width: 1024px) { 
+    .logo {
+        height: 40px;
+        margin-left: 70px;
+    }
+    header h1 {
+        
+        font-size: 32px;
+        margin-right: 30px;
+    }
+    .photographer_section article h2 {
+        font-size: 33px;
+    }
+}
+@media screen and (max-width: 768px) { 
+    .logo {
+        height: 35px;
+    }
+    header h1 {
+        
+        font-size: 28px;
+        margin-right: 20px;
+    }
+    .photographer_section article img {
+        height: 150px;
+        width: 150px;
+        flex-shrink: 0;
+        border-radius: 100px;
+    }
+    .photographer_section article h2 {
+        font-size: 23px;
+    }
+}
+@media screen and (max-width: 320px) { 
+    header {
+        height: 40px;
+        width: 100%;
+        gap: 180px;
+    }
+    .logo {
+        height: 25px;
+        margin-left: 15px;
+    }
+    header h1 {
+        
+        font-size: 18px;
+        margin-right: 0;
+    }
+    .photographer_section article img {
+        height: 83px;
+        width: 83px;
+        border-radius: 100px;
+    }
+    .photographer_section article h2 {
+        font-size: 23px;
+    }
+}

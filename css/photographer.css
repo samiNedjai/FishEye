@@ -11,7 +11,10 @@ body{
 main{
     padding: 0 100px;
 }
-
+.logo {
+    height: 50px;
+    margin-left: 100px;
+}
 .photograph-header {
     padding: 0 50px;
     background-color: #FAFAFA;
@@ -64,7 +67,7 @@ font-weight: 400;
     color: #000000;
     transition-duration: 0.3s;
 }
-/* media  */
+            /* media  */
 .photographer-work {
     padding-top: 40px;
     width: 100%;
@@ -102,7 +105,7 @@ line-height: normal;
 
 
 
-/* gestion ds likes  */ 
+            /* gestion ds likes  */ 
 
 .likes-count {
     color: #901C1C;
@@ -121,10 +124,10 @@ line-height: normal;
 
 .like-button.liked,
 .like-button.liked i {
-    color: #901C1C; /* Cœur rouge lorsque liké */
+    color: #901C1C; 
 }
 
-/* footer  total des likes*/ 
+            /* footer  total des likes*/ 
 .photographer-footer {
     position: fixed;
     bottom: 0;
@@ -136,25 +139,25 @@ line-height: normal;
     align-items: center;
     gap: 60px;
     background-color: #DB8876;
-}
-.total-likes,
-.price-per-day  {
-text-align: center;
-font-size: 24px;
-line-height: normal;
-}
-.total-likes-contenu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-.icon{
-    width: 22px;
-}
+    }
+    .total-likes,
+    .price-per-day  {
+    text-align: center;
+    font-size: 24px;
+    line-height: normal;
+    }
+    .total-likes-contenu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    .icon{
+        width: 22px;
+    }
 
 
-/* le trier  */
+            /* le trier  */
 .works-sort {
     position: relative;
     display: flex;
@@ -190,10 +193,7 @@ line-height: normal;
 }
 
 
-
-
-/* Formulaire  */
-
+            /* Formulaire  */
 
 .modal-hidden {
     display: none;
@@ -210,11 +210,12 @@ line-height: normal;
     display: flex;
     justify-content: center;
     align-items: center;
+   
   }
   
   .modal {
     position: absolute;
-    top: 4vh;
+    top: 62px;
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
@@ -229,6 +230,7 @@ line-height: normal;
     scrollbar-color: #901C1C #DB8876;
     scrollbar-width: thin;
     z-index: 3;
+    
   }
 
   .close-button {
@@ -238,33 +240,35 @@ line-height: normal;
     cursor: pointer;
   }
  
-.contact_modal_background{
+.contact_modal_background {
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: rgba(196, 196, 196, 0.4);
     z-index: -1;
+    
 }
-.modal header {
+.header-form {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-    height: auto;
+    height:auto;
 }
 
-.modal header img {
+.header-form img {
     cursor: pointer;
     position: absolute;
     top: 14px;
     right: 5px;
 }
 
-.modal header h2 {
+.header-form h2 {
     font-size: 64px;
     font-weight: normal;
     text-align: center;
-    padding: 0 45px 20px 0;
+    padding: 0;
+    margin: 0;
 } 
 #photographerName {
     display: flex;
@@ -275,6 +279,7 @@ form {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+   
 }
 
 form label {
@@ -282,7 +287,6 @@ form label {
     font-size: 36px;
 }
 form .form-data {
-    /* position: relative; */
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -295,6 +299,7 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 20px;
 }
 .form-data textarea {
     width: 100%; 
@@ -303,11 +308,12 @@ form input {
     border: 1px solid #ccc; 
     border-radius: 5px; 
     resize: vertical; 
+    font-size: 20px;
 }
 .error-message {
     color: red;
     display: none;
-    font-size: 0.8rem;
+    font-size: 16px;
     margin-top: 4px;
 }
 
@@ -319,7 +325,7 @@ form input {
     padding: 20px;
 }
 
-/* lightbox */
+            /* lightbox */
 .lightbox {
     display: none;
     position: fixed;
@@ -347,48 +353,253 @@ form input {
 .media-name {
     width: 100%;
     color: #901C1C;
-    font-size: 1.5em;
+    font-size: 24px;
 }
   .lightbox-close {
     color: #901C1C;
     position: absolute;
     top: 35px;
-    right: 80px;
-    width: 3em;
+    right: 150px;
+    width: 45px;
     filter: invert(18%) sepia(46%) saturate(3524%) hue-rotate(348deg) brightness(90%) contrast(90%);
     cursor: pointer;
     z-index: 10;
   }
   
-  .lightbox-image {
+  .lightbox-image ,.lightbox-video {
     border-radius: 5px;
     max-width: 100%;
     max-height: 90vh;
 }
-.lightbox-video {
-    border-radius: 5px;
-    max-width: 100%;
-    max-height: 90vh;
-}
+
   .lightbox-prev{
     align-items: center;
-    left: 80px;
+    left: 150px;
   }
   .lightbox-next {
-    right: 80px;
+    right: 150px;
   }
   .lightbox-prev,
   .lightbox-next {
     position: absolute;
-    width: 2.5em;
+    width: 40px;
     filter: invert(18%) sepia(46%) saturate(3524%) hue-rotate(348deg) brightness(90%) contrast(90%);
     cursor: pointer;
     height: 100%;
 }
   
-  
   .lightbox-prev:hover,
   .lightbox-next:hover {
     background: rgba(255, 255, 255, 0.3);
   }
-  
+                    /* respensive  */
+
+@media screen and (max-width: 1024px) {
+    body {
+    
+        max-width: 1024px;
+    }
+    main {
+        padding: 0;
+        margin-left: 40px;
+    }
+    
+    .logo {
+        margin-top: 20px;
+        margin-left: 50px;
+    }
+    .media-card {
+        flex: 1 1 calc(25%);
+        width: 100%;
+    }
+    .media-card img, .media-card video {
+        width: 100%;
+        
+    }
+
+    .photograph-header {
+        padding: 0;
+        width: 80%;
+    }
+    .photograph-header h1 {
+        font-size: 60px;
+       
+    }
+    .photographer-footer {
+        right:0 ;
+        padding: 6px 28px;
+    }
+    .lightbox-image ,.lightbox-video {
+        max-width: 90%;
+    }
+    .media-name {
+        width: 90%;
+        font-size: 20px;
+    }
+}
+@media screen and (max-width: 768px) {
+    body {
+    
+        max-width: 768px;
+    }
+    .logo {
+        margin-top: 15px;
+        height: 40px;
+    }
+
+    .photograph-header {
+        margin-top: 70px;
+        margin-left: 40px;
+        flex-direction: column; 
+        align-items: center; 
+        gap: 20px; 
+        padding: 20px; 
+        justify-content: center;
+    }
+
+    .photograph-header--info {
+        order: 3;
+        width: 100%; 
+        text-align: center;
+    }
+
+    .photograph-header img {
+        order: 1;
+        width: 150px; 
+        height: 150px;
+    }
+    .photograph-header h1 {
+        margin: 0;
+    }
+
+    .contact_button {
+        order: 2; 
+        width: 200px; 
+        margin-top: 10px; 
+    }
+    .works-sort {
+        margin-top: 50px;
+       
+    }
+    #sortSelect {
+        height: 50px;
+    }
+    .media-card {
+        flex: none;
+    }
+    .photographer-footer {
+        right: 0;
+        padding: 0 35px;
+       
+    }
+    .lightbox-image ,.lightbox-video {
+        max-width: 75%;
+    }
+    .media-name {
+        width: 75%;
+        font-size: 20px;
+    }
+    .lightbox-prev,
+     .lightbox-next {
+    width: 25px;
+    }
+    .lightbox-close {
+        width: 25px;
+    }
+}
+@media screen and (max-width: 320px) {
+    body {
+        max-width: 320px;
+    }
+    .logo {
+        margin-top: 15px;
+        height: 20px;
+    }
+    .photograph-header {
+        margin-top: 0;
+        margin-left: 30px;
+        gap: 10px; 
+    }
+    .photograph-header--info {
+        order: 3; 
+        width: 100%; 
+        text-align: center; 
+    }
+    .photograph-header img {
+        order: 1; 
+        width: 100px; 
+        height: 100px;
+    }
+    .photograph-header h1 {
+        font-size: 50px;
+        margin: 0;
+    }
+
+    .contact_button {
+        order: 2; 
+        width: 160px; 
+        margin-top: 10px; 
+        font-size: 16px;
+    }
+    .works-sort {
+        margin-top: 50px;  
+    }
+    #sortSelect {
+        height: 40px;
+        font-size: 16px;
+    }
+    #sortSelect option {
+        font-size: 13px;
+    }
+    .media-card {
+        flex: none;
+    }
+    .title, .likes-count,
+    .total-likes, .price-per-day,
+    .like-button
+    {
+        font-size: 16px;
+    }
+    
+    .icon {
+        width: 17px;
+    }
+    
+    .photographer-footer {
+        right: 0;
+        padding: 0 35px;  
+    }
+    .lightbox {
+        padding: 0;
+    }
+    .media-name {
+        width: 100%;
+        color: #901C1C;
+        font-size: 16px;
+    }
+      .lightbox-close {
+        top: 300px;
+        right: 10px;
+        width: 20px;
+        
+      }
+      .lightbox-image ,.lightbox-video {
+        max-width: 100%;
+    }
+      .lightbox-prev{
+        left: 0;
+      }
+      .lightbox-next {
+        right: 0;
+      }
+      .lightbox-prev,
+      .lightbox-next {
+        position: absolute;
+        width: 20px;
+    }
+
+      .lightbox-prev:hover,
+      .lightbox-next:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+}
