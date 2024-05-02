@@ -103,13 +103,21 @@ function displaySortedMedia(mediaObjects) {
   attachLikeEventHandlers();
   attachLightboxEventHandlers();
 }
-
-// / Attache les événements de clic pour ouvrir la lightbox
+  
+// Fonction pour attacher les événements de clic et de clavier pour ouvrir la lightbox
 function attachLightboxEventHandlers() {
-  document.querySelectorAll('.photographer-work img').forEach((img, index) => {
-    img.addEventListener('click', () => openLightbox(index));
+  const images = document.querySelectorAll('.photographer-work img');
+  images.forEach((img, index) => {
+      img.tabIndex = 0; // Rend l'image focusable
+      img.addEventListener('click', () => openLightbox(index));
+      img.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+              openLightbox(index);
+          }
+      });
   });
 }
+
 // Affiche les détails du photographe et ses médias
 async function displayPhotographerDetails() {
     const photographerId = getPhotographerIdFromUrl();  // Récupère l'ID du photographe depuis l'URL

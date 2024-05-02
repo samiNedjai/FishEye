@@ -5,12 +5,31 @@ export let currentIndex = 0;
 // Tableau contenant les médias du photographe
 export const mediaGallery = []; 
 
+// Gestionnaire d'événements pour les touches du clavier
+function handleKeyPress(event) {
+    switch (event.key) {
+        case 'ArrowLeft':
+            previousImage();
+            break;
+        case 'ArrowRight':
+            nextImage();
+            break;
+        case 'Escape':
+            closeLightbox();
+            break;
+        default:
+            break;
+    }
+}
 // Fonction pour ouvrir la lightbox avec une image ou une vidéo spécifique
 export function openLightbox(index) {
+
+        // Mettre à jour l'index courant
+        currentIndex = index;
         // Sélectionne le conteneur de la lightbox
         const lightboxMediaContainer = document.querySelector('.lightbox-media-container');
         // Récupère le média correspondant à l'index
-        const media = mediaGallery[index];
+        const media = mediaGallery[currentIndex];
   
         // Vider le conteneur actuel
         lightboxMediaContainer.innerHTML = '';
@@ -29,8 +48,7 @@ export function openLightbox(index) {
         `<img src="${media.src}" alt="${media.alt}" class="lightbox-image" id="lightboxImage">
         <h3 class="media-name" >${media.alt}</h3>`;
         }
-        // Met à jour l'index courant
-        currentIndex = index;
+      
         // Affiche la lightbox
         document.getElementById('lightbox').style.display = 'flex';
 
@@ -76,19 +94,3 @@ export function attachLightboxControls() {
     document.querySelector('.lightbox-prev').addEventListener('click', previousImage);
   }
 
-// Gestionnaire d'événements pour les touches du clavier
-function handleKeyPress(event) {
-    switch (event.key) {
-        case 'ArrowLeft':
-            previousImage();
-            break;
-        case 'ArrowRight':
-            nextImage();
-            break;
-        case 'Escape':
-            closeLightbox();
-            break;
-        default:
-            break;
-    }
-}

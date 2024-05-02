@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
 .noScroll{
     overflow: hidden;
 }
 
 body{
+    font-family: "DM Sans";
     margin: auto;
     width: 100%;
     max-width: 1440px;
@@ -130,6 +133,8 @@ line-height: normal;
             /* footer  total des likes*/ 
 .photographer-footer {
     position: fixed;
+    width:  376px;
+    height: 69px;
     bottom: 0;
     right: 90px;
     padding: 16px 35px;
@@ -170,6 +175,7 @@ line-height: normal;
     font-size: 1.125em;
     font-weight: 700;
 }
+
 #sortSelect {
     background-color: #901C1C;
     color: #ffffff;
@@ -488,6 +494,7 @@ form input {
         flex: none;
     }
     .photographer-footer {
+        width: 300px;
         right: 0;
         padding: 0 35px;
        
@@ -568,6 +575,8 @@ form input {
     .photographer-footer {
         right: 0;
         padding: 0 35px;  
+        width: 180px;
+        gap: 0x;
     }
     .lightbox {
         padding: 0;
