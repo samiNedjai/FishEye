@@ -34,12 +34,19 @@ function getPhotographerIdFromUrl() {
 
 // Fonction pour trier les médias selon un critère spécifié ('popularity', 'date', 'title')
 function sortMedia(mediaObjects, sortBy) {
-  const sortingStrategies = {
-      'popularity': (a, b) => b.likes - a.likes,
-      'date': (a, b) => new Date(b.date) - new Date(a.date),
-      'title': (a, b) => a.title.localeCompare(b.title)
+  switch (sortBy) {
+      case 'popularity':
+          mediaObjects.sort((a, b) => b.likes - a.likes);
+          break;
+      case 'date':
+          mediaObjects.sort((a, b) => new Date(b.date) - new Date(a.date));
+          break;
+      case 'title':
+          mediaObjects.sort((a, b) => a.title.localeCompare(b.title));
+          break;
+      default:
+          break;
   };
-  mediaObjects.sort(sortingStrategies[sortBy] || sortingStrategies['title']);
   displaySortedMedia(mediaObjects);
 }
 
