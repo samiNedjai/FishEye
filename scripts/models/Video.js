@@ -20,8 +20,10 @@ export default class Video {
             this.liked = true;  // Marque comme liké
         }
     }
+
+    // Génère le HTML pour afficher la photo
     getHTML() {
-        // Ici, vous devrez décider comment vous souhaitez gérer les miniatures pour les vidéos.
+        
         return `
             <div class="media-card">
                 <video controls>

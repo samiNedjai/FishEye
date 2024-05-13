@@ -1,12 +1,10 @@
-
+/* global console */
 // Importez la classe Photographer
 import { Photographer } from './index.js';
 // Importez MediaFactory depuis le dossier models
 import MediaFactory from '../models/MediaFactory.js';
 // importer fonction d'ovrir le formulaire 
 import { openModal } from '../utils/contactForm.js';
-
-
 //  Importer la lightbox
 import { openLightbox, mediaGallery,attachLightboxControls } from '../utils/lightbox.js';
  // Ce tableau sera rempli lors de l'initialisation de vos médias
@@ -116,7 +114,9 @@ function attachLightboxEventHandlers() {
           }
       });
   });
-}
+} 
+
+
 
 // Affiche les détails du photographe et ses médias
 async function displayPhotographerDetails() {
@@ -150,6 +150,7 @@ async function displayPhotographerDetails() {
                   sortMedia(mediaObjects, sortBy);
                    displaySortedMedia(mediaObjects);
               });
+          
               // total des likes 
               const totalLikes = mediaData.reduce((total, media) => total + media.likes, 0);
               const pricePerDay = photographerData.price;
@@ -164,14 +165,16 @@ async function displayPhotographerDetails() {
 
               });
           
-        } else {
-            console.error('Photographe non trouvé');
+        } 
+        else {
+            console.error('Photographe non trouvé'); // eslint-disable-line no-console
         }
-    } else {
-        console.error('ID de photographe manquant dans l\'URL');
+    } 
+    else {
+        console.error('ID de photographe manquant dans l\'URL'); // eslint-disable-line no-console
     }
     attachLightboxControls();
     attachLightboxEventHandlers();
 }
 
-document.addEventListener('DOMContentLoaded', displayPhotographerDetails);
+document.addEventListener('DOMContentLoaded',displayPhotographerDetails());
