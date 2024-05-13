@@ -21,8 +21,8 @@ const validations = [
 ];
 
 // Fonction pour ouvrir le modal avec le nom du photographe
-export function openModal(photographerName) {
-    document.getElementById('photographerName').textContent = photographerName;
+export function openModal(photographer) {
+    document.getElementById('photographerName').textContent = photographer;
     modal.classList.add('modal-visible');
     modal.classList.remove('modal-hidden');
     document.body.classList.add('noScroll'); // Empêche le défilement du fond
