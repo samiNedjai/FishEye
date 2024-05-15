@@ -326,10 +326,18 @@ form input {
     border-color: red;
 }
 .thank-you-modal-content {
+    margin-top: 50px;
+    margin-bottom: 50px;
     text-align: center;
     padding: 20px;
+    font-size: 24px;
 }
-
+.close-thank-you {
+    margin-top: 40px;
+    color: white;
+    background-color: #901C1C;
+    font-size: 24px;
+}
             /* lightbox */
 .lightbox {
     display: none;

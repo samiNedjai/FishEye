@@ -19,9 +19,7 @@ export class Photographer {
   
       const article = document.createElement("article");
       article.className = "photographer-article";
-      article.dataset.id = this.id; // Permet d'ajouter un data-id avec l'ID du photographe
-    
-    
+ 
       const img = document.createElement("img");
       img.className = "photographer-portrait";
       img.src = `assets/photographers/${this.portrait}`;
@@ -42,12 +40,13 @@ export class Photographer {
       priceElement.className = "price";
       priceElement.textContent = `${this.price}€/jour`;
     
-      // Assemblage des différents éléments de la carte
+     // Ajoute les éléments au <article>
       article.append(img, nameElement, locationElement, taglineElement, priceElement);
-  
-      // Ajouter le lien à l'article
-      link.appendChild(article);
     
+    // Ajoute l'<article> au <a>
+      link.appendChild(article);
+
+    // Retourne le <a> qui contient tous les détails du photographe
       return link;
     }
     
