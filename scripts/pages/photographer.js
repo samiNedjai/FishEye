@@ -170,5 +170,5 @@ function attachSortAndContactListeners() {
 });
 }
 
-// Initialisation à la fin du chargement du contenu de la page
-document.addEventListener('DOMContentLoaded', displayPhotographerDetails);
+// Initialisation 
+ displayPhotographerDetails();

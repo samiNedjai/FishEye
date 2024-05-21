@@ -23,6 +23,4 @@ async function init() {
  
 }
 
-
-// Assurez-vous que le DOM est complètement chargé avant d'exécuter le script
-document.addEventListener("DOMContentLoaded", init); 
+ init(); 

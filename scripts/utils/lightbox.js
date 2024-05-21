@@ -58,28 +58,23 @@ export function openLightbox(index) {
 
 // Fonction pour naviguer à l'image suivante
 function nextImage() {
-    for (let i = 0; i < mediaGallery.length; i++) {
         if (currentIndex === mediaGallery.length - 1) {
             currentIndex = 0;
         } else {
             currentIndex++;
         }
         openLightbox(currentIndex);
-        break; // Sort de la boucle après avoir ouvert la lightbox avec l'image suivante
-    }
+       
 }
 
 // Fonction pour naviguer à l'image précédente
 function previousImage() {
-    for (let i = 0; i < mediaGallery.length; i++) {
         if (currentIndex === 0) {
             currentIndex = mediaGallery.length - 1;
         } else {
             currentIndex--;
         }
         openLightbox(currentIndex);
-        break; // Sort de la boucle après avoir ouvert la lightbox avec l'image précédente
-    }
 }
 
 // Fonction pour fermer la lightbox
